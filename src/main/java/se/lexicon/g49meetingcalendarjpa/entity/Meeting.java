@@ -32,6 +32,8 @@ public class Meeting {
 
     @Column(nullable = false)
     private LocalDateTime endTime;
+    // Set Calendars
+    @Setter
     @Column(nullable = false)
 
     @OneToMany(mappedBy = "meeting", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
@@ -65,8 +67,4 @@ public class Meeting {
         user.getMeetings().remove(this);
     }
 
-    // Set Calendars
-    public void setCalendars(List<Calendar> calendars) {
-        this.calendars = calendars;
-    }
 }

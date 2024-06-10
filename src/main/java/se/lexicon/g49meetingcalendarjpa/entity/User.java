@@ -36,6 +36,7 @@ public class User {
     @Column(nullable = false)
     private boolean enabled;
 
+    @Setter(AccessLevel.NONE)
     @ManyToMany(mappedBy = "participants")
     private List<Meeting> meetings = new ArrayList<>();
 

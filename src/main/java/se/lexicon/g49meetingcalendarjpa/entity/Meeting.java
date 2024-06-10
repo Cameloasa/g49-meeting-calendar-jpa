@@ -64,4 +64,9 @@ public class Meeting {
         participants.remove(user);
         user.getMeetings().remove(this);
     }
+
+    // Set Calendars
+    public void setCalendars(List<Calendar> calendars) {
+        this.calendars = calendars;
+    }
 }

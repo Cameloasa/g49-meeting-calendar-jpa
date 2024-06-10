@@ -65,5 +65,9 @@ public class User {
         meeting.getParticipants().add(this);
     }
 
+    public void removeMeeting(Meeting meeting) {
+        meetings.remove(meeting);
+        meeting.getParticipants().remove(this);
+    }
 
 }

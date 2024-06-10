@@ -25,7 +25,10 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
-    private String userName;
+    private String email;
+
+    @Column(nullable = false)
+    private String username;
 
     @Column(nullable = false)
     private String password;
@@ -36,6 +39,10 @@ public class User {
     @ManyToMany(mappedBy = "participants")
     private List<Meeting> meetings = new ArrayList<>();
 
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+    }
 
     // Method to hash the password
     public void setPassword(String password) {

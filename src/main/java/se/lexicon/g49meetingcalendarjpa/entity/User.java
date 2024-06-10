@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -30,6 +33,9 @@ public class User {
     @Column(nullable = false)
     private boolean enabled;
 
+    @ManyToMany(mappedBy = "participants")
+    private List<Meeting> meetings = new ArrayList<>();
+
 
     // Method to hash the password
     public void setPassword(String password) {
@@ -44,6 +50,12 @@ public class User {
     // Method to check the password
     public boolean checkPassword(String plainPassword) {
         return BCrypt.checkpw(plainPassword, this.password);
+    }
+
+
+    public void addMeeting(Meeting meeting) {
+        meetings.add(meeting);
+        meeting.getParticipants().add(this);
     }
 
 
